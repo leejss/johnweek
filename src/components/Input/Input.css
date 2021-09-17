@@ -18,7 +18,7 @@
 }
 
 .iconWrapper {
-  display: inline-flex;
+  display: inline-block;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -30,7 +30,9 @@
 
 .iconWrapper > .icon {
   position: absolute;
+  top: 50%;
   right: 0;
   padding: 5px;
   cursor: pointer;
+  transform: translateY(-50%);
 }

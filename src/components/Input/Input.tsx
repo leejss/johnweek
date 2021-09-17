@@ -10,10 +10,11 @@ export interface InputProps {
   error?: boolean;
   ok?: boolean;
   className?: string;
+  placeholder?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ icon, error, fullWidth, ok, className }, ref) => {
+  ({ icon, error, fullWidth, ok, className, placeholder }, ref) => {
     const classNames = clsx(
       "input",
       fullWidth && "fullWidth",
@@ -22,7 +23,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       className
     );
     const iconMarkup = icon && pickIcon(icon);
-    const inputMarkup = <input ref={ref} className={classNames} />;
+    const inputMarkup = (
+      <input ref={ref} className={classNames} placeholder={placeholder} />
+    );
     return icon ? (
       <div className="iconWrapper">
         {inputMarkup}
