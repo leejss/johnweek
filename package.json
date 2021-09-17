@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
-    "@fortawesome/fontawesome-free": "^5.15.4",
     "react-icons": "^4.2.0"
   },
   "devDependencies": {

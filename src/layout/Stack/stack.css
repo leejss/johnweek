@@ -1,0 +1,15 @@
+.stack {
+  display: grid;
+}
+
+.stack.gutter-small {
+  gap: 5px;
+}
+
+.stack.gutter-medium {
+  gap: 10px;
+}
+
+.stack.gutter-large {
+  gap: 15px;
+}
