@@ -6,10 +6,15 @@ import "./stack.css";
 
 export interface StackProps {
   gutter?: SizeType;
+  className?: string;
 }
 
-const Stack: React.FC<StackProps> = ({ children, gutter }) => {
-  const classNames = clsx("stack", gutter && pickSize("gutter", gutter));
+const Stack: React.FC<StackProps> = ({ children, gutter, className }) => {
+  const classNames = clsx(
+    "stack",
+    gutter && pickSize("gutter", gutter),
+    className
+  );
   return <div className={classNames}>{children}</div>;
 };
 

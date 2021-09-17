@@ -1,8 +1,14 @@
+import clsx from "clsx";
 import React from "react";
 import "./center.css";
 
-const Center: React.FC = ({ children }) => {
-  return <div className="center">{children}</div>;
+export interface CenterProps {
+  className?: string;
+}
+
+const Center: React.FC<CenterProps> = ({ children, className }) => {
+  const classNames = clsx("center", className);
+  return <div className={classNames}>{children}</div>;
 };
 
 export default Center;

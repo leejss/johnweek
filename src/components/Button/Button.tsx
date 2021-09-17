@@ -12,6 +12,7 @@ export interface ButtonProps {
   danger?: boolean;
   disabled?: boolean;
   fullWidth?: boolean;
+  className?: string;
 }
 
 const Button = ({
@@ -20,8 +21,9 @@ const Button = ({
   disabled,
   fullWidth,
   outline,
-  primary,
+  primary = true,
   size = "medium",
+  className,
 }: ButtonProps) => {
   // Styling
   const classNames = clsx(
@@ -31,7 +33,8 @@ const Button = ({
     outline && "outline",
     disabled && "disabled",
     fullWidth && "fullWidth",
-    size && pickSize("size", size)
+    size && pickSize("size", size),
+    className
   );
 
   const textMarkup = children ? <span>{children}</span> : null;
