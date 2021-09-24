@@ -1,0 +1,39 @@
+@import url("../../styles/var.css");
+
+/* Default Styles */
+.Link {
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.Link:visited {
+  color: var(--black);
+}
+
+.Link:active {
+  color: var(--black);
+}
+
+/* underline support */
+.Link.underline {
+  text-decoration: underline;
+}
+
+/* 
+
+== User guides ==
+
+.Link.size-small {
+  Link small size
+}
+
+.Link.size-medium {
+  Link medium size
+}
+
+.Link.size-large {
+  Link large size
+}
+
+*/

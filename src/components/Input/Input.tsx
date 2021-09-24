@@ -4,7 +4,7 @@ import { IconType } from "../types";
 import { pickIcon } from "../utils/css";
 import "./Input.css";
 
-export interface InputProps {
+export interface InputProps  {
   icon?: IconType;
   fullWidth?: boolean;
   error?: boolean;
