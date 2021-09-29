@@ -1,5 +1,4 @@
 import { SizeType } from "../types";
-import React from "react";
 
 export function pickSize(size: SizeType) {
   const DEFAULT = "medium";
@@ -12,4 +11,8 @@ export function pickSize(size: SizeType) {
     default:
       return `${PREFIX}-${DEFAULT}`;
   }
+}
+
+export function base(css: string) {
+  return `${css}-base`;
 }

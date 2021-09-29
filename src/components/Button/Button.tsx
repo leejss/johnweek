@@ -1,8 +1,9 @@
 import clsx from "clsx";
-import React from "react";
+import React, { useCallback } from "react";
 import { ButtonVariant, ColorType, SizeType } from "../types";
-import { pickSize } from "../utils/css";
-import Spinner from "./spinner.svg";
+import { base, pickSize } from "../utils/css";
+import { Spinner } from "../SVG";
+import "./Button.css";
 
 export interface ButtonProps {
   children?: React.ReactNode;
@@ -17,8 +18,6 @@ export interface ButtonProps {
   endIcon?: React.ReactNode;
   onClick?(): void;
 }
-
-console.log(Spinner);
 
 const Button = ({
   children,
@@ -43,17 +42,31 @@ const Button = ({
     size && pickSize(size),
     className
   );
+
+  // 이벤트 핸들러
+  const handleClick = useCallback(() => {
+    if (onClick) {
+      onClick();
+      console.log("onClick");
+    }
+  }, []);
+
   const textMarkup =
     typeof children === "string" ? (
       <span className="btn-text">{children}</span>
     ) : null;
+
   const buttonMarkup = loading ? (
-    <button className={classnames}></button>
+    <button className={classnames} disabled>
+      <Spinner className="spinner" />
+    </button>
   ) : (
-    <button className={classnames}>
-      {startIcon ? startIcon : null}
-      {textMarkup}
-      {endIcon ? endIcon : null}
+    <button className={classnames} onClick={handleClick}>
+      <span className="Button-inner">
+        {startIcon ? startIcon : null}
+        {textMarkup}
+        {endIcon ? endIcon : null}
+      </span>
     </button>
   );
 

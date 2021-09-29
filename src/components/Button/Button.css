@@ -1,15 +1,34 @@
 .Button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #f0f0f0;
+  color: rgb(54, 54, 54);
+  transition: all 0.1s;
 }
 
-/* Variant support */
+/* Variant Base support */
 .Button.text {
+  background-color: transparent;
 }
-.Button.outline {
+.Button.text:hover {
 }
-.Button.contained {
+.Button.outlined {
 }
 
-/* Color support */
+.Button.outlined:hover {
+}
+
+.Button.contained {
+  box-shadow: 1px 1px 5px 0.1px rgba(209, 209, 209, 0.96);
+}
+
+.Button.contained:hover {
+}
+
+/* Color Base support */
 .Button.primary {
 }
 
@@ -25,6 +44,7 @@
 /* Boolean style */
 
 .Button.loading {
+  cursor: not-allowed;
 }
 
 .Button.disabled {
@@ -45,4 +65,21 @@
 }
 
 .Button .spinner {
+  display: inline;
+  color: red;
+}
+
+.Button-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Button-inner span {
+  flex: 1;
+}
+
+.Button-inner svg {
+  padding: 5px;
 }
