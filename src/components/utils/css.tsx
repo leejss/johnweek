@@ -1,24 +1,15 @@
-import { IconType, SizeType } from "../types";
+import { SizeType } from "../types";
 import React from "react";
-import { Icon } from "../Icon";
 
-export function pickSize(name: string, size: SizeType) {
+export function pickSize(size: SizeType) {
   const DEFAULT = "medium";
+  const PREFIX = "size";
   switch (size) {
     case "small":
-      return `${name}-small`;
+      return `${PREFIX}-small`;
     case "large":
-      return `${name}-large`;
+      return `${PREFIX}-large`;
     default:
-      return `${name}-${DEFAULT}`;
-  }
-}
-
-export function pickIcon(icon: IconType) {
-  switch (icon) {
-    case "search":
-      return <Icon type="search" />;
-    case "google":
-      return <Icon type="google" />;
+      return `${PREFIX}-${DEFAULT}`;
   }
 }

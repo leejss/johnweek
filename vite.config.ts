@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import babel from "@rollup/plugin-babel";
+import svgr from "@svgr/rollup";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,6 +13,7 @@ export default defineConfig({
     rollupOptions: {
       external: ["react", "react-dom"],
       plugins: [
+        svgr(),
         babel({
           babelHelpers: "runtime",
           exclude: "**/node_modules/**",

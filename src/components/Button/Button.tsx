@@ -1,44 +1,62 @@
-import React from "react";
-import { SizeType } from "../types";
 import clsx from "clsx";
-import "./Button.css";
+import React from "react";
+import { ButtonVariant, ColorType, SizeType } from "../types";
 import { pickSize } from "../utils/css";
+import Spinner from "./spinner.svg";
 
 export interface ButtonProps {
-  children?: string;
-  size?: SizeType;
-  primary?: boolean;
-  outline?: boolean;
-  danger?: boolean;
-  disabled?: boolean;
-  fullWidth?: boolean;
+  children?: React.ReactNode;
   className?: string;
+  varaint?: ButtonVariant;
+  color?: ColorType;
+  size?: SizeType;
+  loading?: boolean;
+  fullWidth?: boolean;
+  disabled?: boolean;
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
+  onClick?(): void;
 }
+
+console.log(Spinner);
 
 const Button = ({
   children,
-  danger,
-  disabled,
-  fullWidth,
-  outline,
-  primary = true,
-  size = "medium",
   className,
+  disabled,
+  endIcon,
+  fullWidth,
+  loading,
+  onClick,
+  size,
+  startIcon,
+  varaint,
+  color,
 }: ButtonProps) => {
-  // Styling
-  const classNames = clsx(
-    "button",
-    primary && "primary",
-    danger && "danger",
-    outline && "outline",
+  const classnames = clsx(
+    "Button",
+    varaint && varaint,
+    color && color,
     disabled && "disabled",
     fullWidth && "fullWidth",
-    size && pickSize("size", size),
+    loading && "loading",
+    size && pickSize(size),
     className
   );
+  const textMarkup =
+    typeof children === "string" ? (
+      <span className="btn-text">{children}</span>
+    ) : null;
+  const buttonMarkup = loading ? (
+    <button className={classnames}></button>
+  ) : (
+    <button className={classnames}>
+      {startIcon ? startIcon : null}
+      {textMarkup}
+      {endIcon ? endIcon : null}
+    </button>
+  );
 
-  const textMarkup = children ? <span>{children}</span> : null;
-  const buttonMarkup = <button className={classNames}>{textMarkup}</button>;
   return buttonMarkup;
 };
 

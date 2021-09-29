@@ -1,48 +1,48 @@
-@import url(../../styles/var.css);
-
-.button {
-  border: none;
-  outline: none;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  line-height: 1.5;
-  color: var(--black);
+.Button {
 }
 
-.button.primary {
-  background-color: var(--primary);
-  color: var(--white);
+/* Variant support */
+.Button.text {
+}
+.Button.outline {
+}
+.Button.contained {
 }
 
-.button.outline {
-  background: none;
-  border: 2px solid var(--primary);
+/* Color support */
+.Button.primary {
 }
 
-.button.danger {
-  background: var(--danger);
-  color: var(--white);
+.Button.secondary {
 }
 
-.button.fullWidth {
-  width: 100%;
+.Button.danger {
 }
 
-.button.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.Button.info {
 }
 
-.button.size-small {
-  font-size: 0.825rem;
-  padding: 5px 10px;
+/* Boolean style */
+
+.Button.loading {
 }
-.button.size-medium {
-  font-size: 1rem;
-  padding: 8px 12px;
+
+.Button.disabled {
 }
-.button.size-large {
-  font-size: 1.5rem;
-  padding: 10px 15px;
+
+.Button.fullWidth {
+}
+
+/* Size support */
+
+.Button.size-small {
+}
+
+.Button.size-medium {
+}
+
+.Button.size-large {
+}
+
+.Button .spinner {
 }
