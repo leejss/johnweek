@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 import { Label } from "../Label";
+import "./Labelled.css";
 
 export interface LabelledProps {
   label?: string;
@@ -22,10 +23,10 @@ const Labelled = ({ label, children, error, fit }: LabelledProps) => {
     </div>
   );
 
-  const classNames = clsx(fit && "fit")
+  const classNames = clsx("Labelled", fit && "fit");
 
   return (
-    <div style={{ width: "fit-content" }}>
+    <div className={classNames}>
       {labelMarkup}
       {children}
       {errorMarkup}

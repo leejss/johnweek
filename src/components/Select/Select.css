@@ -1,35 +1,66 @@
-.SelectWrapper {
+.Select-container {
+  box-sizing: border-box;
   position: relative;
 }
 
-.SelectWrapper > .Select {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  opacity: 0.001;
-  z-index: 20;
+/* Control */
+.Select-container > .Control {
+  min-height: 3rem;
+  border: 1px solid rgb(124, 124, 124);
+  border-radius: 4px;
+  display: flex;
+  transition: all 0.1s;
 }
 
-.SelectWrapper > .Content {
+.Select-container > .Control.focus {
+  border: none;
+  /* outline: 2px solid skyblue; */
+  box-shadow: 1px 1px 11px 1px skyblue;
+}
+
+.Select-container > .Control > .Select-label {
+  flex: 1;
+  border-right: 1px solid rgb(124, 124, 124);
   display: flex;
   align-items: center;
-  z-index: 30;
   padding: 1rem;
 }
 
-.SelectedOption {
-  flex: 1;
+.Select-container > .Control > .Select-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
-.Backdrop {
+.Select-container > .Control > .Select-icon:hover {
+  color: skyblue;
+}
+
+/* Menu */
+.Select-container > .Menu {
+  box-sizing: border-box;
   position: absolute;
-  top: 0;
+  top: 4rem;
   left: 0;
-  right: 0;
-  bottom: 0;
-  border: 1px solid black;
-  border-radius: 10px;
+  box-shadow: 3px 5px 11px 3px rgba(0, 0, 0, 0.26);
+  border-radius: 4px;
+  width: 100%;
+  display: none;
+}
+
+.Select-container > .Menu.show {
+  display: grid;
+}
+
+.Select-container > .Menu > .Menu-item {
+  padding: 10px 20px;
+}
+
+.Select-container > .Menu > .Menu-item:hover {
+  background: skyblue;
+}
+
+.Select-container > .Menu > .Menu-item.active {
+  background: skyblue;
 }

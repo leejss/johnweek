@@ -1,67 +1,100 @@
-import React from "react";
-import { FaArrowDown } from "react-icons/fa";
-import { Labelled } from "../Labelled";
+import clsx from "clsx";
+import React, { useState, useRef, useEffect } from "react";
+import { BiDownArrow } from "react-icons/bi";
 import "./Select.css";
 
-export interface Option {
+interface Option {
   label: string;
   value: string;
 }
 
 export interface SelectProps {
-  options: Option[];
-  onChange?(selected: string): void;
-  value?: string;
-  label?: string;
+  placeholder?: string;
+  icon?: React.ReactNode;
+  value?: React.ReactNode;
+  onSelect?(e: string): void;
+  options?: Option[];
 }
 
-const Select = ({ options, value, onChange, label }: SelectProps) => {
-  const handleChange = onChange
-    ? (event: React.ChangeEvent<HTMLSelectElement>) =>
-        onChange(event.currentTarget.value)
-    : undefined;
+const Select = ({
+  icon = <BiDownArrow />,
+  onSelect,
+  placeholder = "선택하세요",
+  value,
+  options,
+}: SelectProps) => {
+  // display 컨트롤
+  const [show, setShow] = useState(false);
+  // CSS 컨트롤: onFocus
+  const [focus, setFocus] = useState(false);
+  // Ref
+  const selectRef = useRef<HTMLDivElement>(null);
 
-  const selectedOption = getSelectedOption(options, value);
+  console.log(onSelect);
+
+  // 이벤트 핸들러
+  // - 옵션 클릭시
+  const handleSelect = (
+    e: React.MouseEvent<HTMLDivElement> & { target: Node }
+  ) => {
+    // 메뉴 아이템 클릭 시,
+    // 1. placeholder를 비운다.
+    placeholder = "";
+    // 2. onSelect함수를 호출한다.
+    if (onSelect) {
+      const selected = e.target.textContent ? e.target.textContent : "";
+      onSelect(selected);
+    }
+    // 3. show 를 끈다.
+    setShow(false);
+  };
+
+  // - Select 컨트롤 클릭시
+  const handleClick = () => {
+    setShow((p) => !p);
+  };
+
+  // useEffect
+  useEffect(() => {
+    // 메뉴가 보이면 focus가 true
+    setFocus(show);
+  }, [show]);
+
+  // Class
+  const menuClasses = clsx("Menu", show && "show");
+  const controlClasses = clsx("Control", focus && "focus");
 
   // Markup
-  const optionsMarkup =
-    options.length !== 0 ? options.map(renderSingleOption) : null;
+  const menuMarkup =
+    options && options.length !== 0 ? (
+      <div className={menuClasses} onClick={handleSelect}>
+        {options.map((m) => {
+          return (
+            <div className="Menu-item" key={m.value}>
+              {m.label}
+            </div>
+          );
+        })}
+      </div>
+    ) : null;
 
-  const contentMarkup = (
-    <div className="Content">
-      {/* Inline label */}
-      {/* Prefix */}
-      <span className="SelectedOption">{selectedOption?.label}</span>
-      <FaArrowDown />
+  const labelMarkup = (
+    <div className="Select-label">
+      {placeholder && !value ? placeholder : value ? value : placeholder}
     </div>
   );
 
+  const iconMarkup = icon ? <div className="Select-icon">{icon}</div> : null;
+
   return (
-    <Labelled label={label}>
-      <div className="SelectWrapper">
-        <select className="Select" value={value} onChange={handleChange}>
-          {optionsMarkup}
-        </select>
-        {contentMarkup}
-        <div className="Backdrop" />
+    <div className="Select-container">
+      <div className={controlClasses} onClick={handleClick}>
+        {labelMarkup}
+        {iconMarkup}
       </div>
-    </Labelled>
+      {menuMarkup}
+    </div>
   );
 };
 
 export default Select;
-
-// functions
-function renderSingleOption(op: Option): React.ReactNode {
-  // render option
-  const { label, value } = op;
-  return (
-    <option key={value} value={value} className="Option">
-      {label}
-    </option>
-  );
-}
-
-function getSelectedOption(options: Option[], value?: string) {
-  return options.find((op) => op.value === value);
-}

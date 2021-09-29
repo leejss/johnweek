@@ -1,0 +1,7 @@
+.Labelled {
+  width: 100%;
+}
+
+.Labelled.fit {
+  width: fit-content;
+}

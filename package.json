@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
-    "react-icons": "^4.2.0"
+    "react-icons": "^4.2.0",
+    "react-select": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
