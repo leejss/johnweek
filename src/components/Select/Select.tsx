@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import React, { useState, useRef, useEffect } from "react";
 import { BiDownArrow } from "react-icons/bi";
+import { useDetectClick } from "../../hooks/useDetectClick";
 import "./Select.css";
 
 interface Option {
@@ -29,13 +30,12 @@ const Select = ({
   const [focus, setFocus] = useState(false);
   // Ref
   const selectRef = useRef<HTMLDivElement>(null);
-
-  console.log(onSelect);
+  const outsideClicked = useDetectClick(selectRef);
 
   // 이벤트 핸들러
   // - 옵션 클릭시
   const handleSelect = (
-    e: React.MouseEvent<HTMLDivElement> & { target: Node }
+    e: React.MouseEvent<HTMLDivElement> & { target: Element }
   ) => {
     // 메뉴 아이템 클릭 시,
     // 1. placeholder를 비운다.
@@ -59,6 +59,14 @@ const Select = ({
     // 메뉴가 보이면 focus가 true
     setFocus(show);
   }, [show]);
+
+  useEffect(() => {
+    if (outsideClicked) {
+      setShow(false);
+    }
+  }, [outsideClicked]);
+  console.log("outsideClicked", outsideClicked);
+  console.log("show", show);
 
   // Class
   const menuClasses = clsx("Menu", show && "show");
@@ -87,7 +95,7 @@ const Select = ({
   const iconMarkup = icon ? <div className="Select-icon">{icon}</div> : null;
 
   return (
-    <div className="Select-container">
+    <div className="Select-container" ref={selectRef}>
       <div className={controlClasses} onClick={handleClick}>
         {labelMarkup}
         {iconMarkup}
