@@ -1,44 +1,106 @@
+@import url("../../styles/var.css");
 .Button {
-  padding: 10px 20px;
   border: none;
   outline: none;
   border-radius: 5px;
   cursor: pointer;
-  background: #f0f0f0;
-  color: rgb(54, 54, 54);
   transition: all 0.1s;
+
+  background: none;
 }
 
-/* Variant Base support */
-.Button.text {
-  background-color: transparent;
-}
-.Button.text:hover {
-}
-.Button.outlined {
-}
+/* box-shadow: 1px 1px 5px 0.1px rgba(209, 209, 209, 0.96); */
 
-.Button.outlined:hover {
-}
+/* Color + Variant support */
 
+/* Base */
 .Button.contained {
   box-shadow: 1px 1px 5px 0.1px rgba(209, 209, 209, 0.96);
 }
-
-.Button.contained:hover {
+.Button.text {
+  background: none;
 }
 
-/* Color Base support */
+/* Primary */
 .Button.primary {
+  color: var(--primaryText);
+}
+.Button.primary.contained {
+  background: var(--primary);
+}
+.Button.primary.contained:hover {
+  background: var(--primaryLight);
+}
+.Button.primary.text {
+  color: var(--primary);
+}
+.Button.primary.text:hover {
+  background: var(--primaryLight);
+  color: var(--primaryText);
 }
 
-.Button.secondary {
+.Button.primary.outlined {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+.Button.primary.outlined:hover {
+  background: var(--primaryLight);
+  color: var(--primaryText);
+  border-color: var(--primaryText);
 }
 
-.Button.danger {
+/* Secondary */
+.Buton.secondary {
+  color: var(--secondaryText);
+}
+.Button.secondary.contained {
+  background: var(--secondary);
+}
+.Button.secondary.contained:hover {
+  background: var(--secondaryLight);
+}
+/* .Button.secondary.text {
+} */
+.Button.secondary.text:hover {
+  background: var(--secondaryLight);
 }
 
-.Button.info {
+.Button.secondary.outlined {
+  border: 1px solid var(--secondary);
+  color: var(--secondaryText);
+}
+.Button.secondary.outlined:hover {
+  background: var(--secondaryLight);
+  color: var(--secondaryText);
+  border-color: var(--secondaryText);
+}
+
+/* Danger */
+.Button.primary {
+  color: var(--primaryText);
+}
+.Button.primary.contained {
+  background: var(--primary);
+}
+.Button.primary.contained:hover {
+  background: var(--primaryLight);
+}
+.Button.primary.text {
+  color: var(--primary);
+}
+.Button.primary.text:hover {
+  background: var(--primaryLight);
+  color: var(--primaryText);
+}
+
+.Button.primary.outlined {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+.Button.primary.outlined:hover {
+  background: var(--primaryLight);
+  color: var(--primaryText);
+  border-color: var(--primaryText);
 }
 
 /* Boolean style */
@@ -69,17 +131,16 @@
   color: red;
 }
 
-.Button-inner {
+.Button > .inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
 }
 
-.Button-inner span {
+.Button > .inner > svg {
+  padding: 5px;
+}
+
+.Button > .inner > .btn-text {
   flex: 1;
-}
-
-.Button-inner svg {
   padding: 5px;
 }

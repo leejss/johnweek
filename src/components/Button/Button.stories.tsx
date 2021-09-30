@@ -12,7 +12,7 @@ export default {
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  loading: true,
+  loading: false,
   children: "Button",
-  startIcon: <FiCrosshair />,
+  varaint: "contained",
 };

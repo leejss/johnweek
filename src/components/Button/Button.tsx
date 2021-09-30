@@ -27,10 +27,10 @@ const Button = ({
   fullWidth,
   loading,
   onClick,
-  size,
+  size = "medium",
   startIcon,
-  varaint,
-  color,
+  varaint = "contained",
+  color = "primary",
 }: ButtonProps) => {
   const classnames = clsx(
     "Button",
@@ -62,7 +62,7 @@ const Button = ({
     </button>
   ) : (
     <button className={classnames} onClick={handleClick}>
-      <span className="Button-inner">
+      <span className="inner">
         {startIcon ? startIcon : null}
         {textMarkup}
         {endIcon ? endIcon : null}

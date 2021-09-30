@@ -1,11 +1,11 @@
 :root {
-  --primary: #212121;
-  --primaryLight: #484848;
-  --primaryDark: #000;
+  --primary: #ff6f00;
+  --primaryLight: #ffa040;
   --primaryText: #fff;
-  --secondary: #f44336;
-  --secondaryLight: #ff7961;
-  --secondaryDark: #ba000d;
+  --secondary: #bdbdbd;
+  --secondaryLight: #efefef;
   --secondaryText: #000;
-  --secondaryDarkText: #fff;
+  -danger: #d50000;
+  -dangerlight: #ff5131;
+  -dangertext: #ffffff;
 }
