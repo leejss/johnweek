@@ -3,10 +3,10 @@ import React, { useCallback } from "react";
 import { ButtonVariant, ColorType, SizeType } from "../types";
 import { base, pickSize } from "../utils/css";
 import { Spinner } from "../SVG";
-import "./Button.css";
+import "./Button.scss";
 
 export interface ButtonProps {
-  children?: React.ReactNode;
+  children?: string;
   className?: string;
   varaint?: ButtonVariant;
   color?: ColorType;
@@ -56,17 +56,22 @@ const Button = ({
       <span className="btn-text">{children}</span>
     ) : null;
 
+  const iconMarkup = (
+    <span className="icon-wrapper">
+      {startIcon ? startIcon : null}
+      {endIcon ? endIcon : null}
+    </span>
+  );
+
   const buttonMarkup = loading ? (
     <button className={classnames} disabled>
       <Spinner className="spinner" />
     </button>
   ) : (
     <button className={classnames} onClick={handleClick}>
-      <span className="inner">
-        {startIcon ? startIcon : null}
-        {textMarkup}
-        {endIcon ? endIcon : null}
-      </span>
+      {startIcon && startIcon}
+      {children}
+      {endIcon && endIcon}
     </button>
   );
 

@@ -1,0 +1,64 @@
+@import "../../styles/colors";
+@import "../../styles/base/button";
+@import "../../styles/utils";
+
+.Button {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transform: all 0.1s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &.loading {
+    cursor: not-allowed;
+  }
+
+  &.disabled {
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  @include button-size("medium", 1rem);
+  @include button-size("small", 0.8rem);
+  @include button-size("large", 1.2rem);
+}
+
+.text {
+  background: none;
+  @include text-variant("primary", $primary, $primary-light, $primary-text);
+  @include text-variant(
+    "secondary",
+    $secondary,
+    $secondary-light,
+    $secondary-text
+  );
+  @include text-variant("error", $danger, $danger-light, $danger-text);
+}
+
+.contained {
+  @include contained-variant(
+    "primary",
+    $primary,
+    $primary-light,
+    $primary-text
+  );
+  @include contained-variant(
+    "secondary",
+    $secondary,
+    $secondary-light,
+    $secondary-text
+  );
+  @include contained-variant("error", $danger, $danger-light, $danger-text);
+}
+
+.outlined {
+  background: none;
+  @include outlined-variant("primary", $primary, $primary-text);
+  @include outlined-variant("secondary", $secondary, $secondary-text);
+  @include outlined-variant("error", $danger, $danger-text);
+}

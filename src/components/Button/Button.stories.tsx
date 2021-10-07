@@ -2,7 +2,8 @@ import React from "react";
 import Button from "./Button";
 import type { ButtonProps } from "./Button";
 import { ComponentMeta, Story } from "@storybook/react";
-import { FiCrosshair } from "react-icons/fi";
+import { AiFillAccountBook } from "react-icons/ai";
+import "./Button.scss";
 
 export default {
   title: "Element/Button",
@@ -15,4 +16,6 @@ Default.args = {
   loading: false,
   children: "Button",
   varaint: "contained",
+  fullWidth: false,
+  endIcon: <AiFillAccountBook />,
 };

@@ -1,0 +1,49 @@
+/* 각각의 varaint에 대한 믹스인을 정의해서 재사용?*/
+@mixin text-variant($varaint, $color, $color-light, $color-text) {
+  &.#{$varaint} {
+    color: $color;
+    &:hover {
+      background-color: $color-light;
+      color: $color-text;
+    }
+  }
+}
+
+@mixin contained-variant($varaint, $color, $color-light, $color-text) {
+  &.#{$varaint} {
+    background-color: $color;
+    color: $color-text;
+    box-shadow: 1px 1px 5px 0.1px rgba(209, 209, 209, 0.96);
+    &:hover {
+      background-color: $color-light;
+    }
+  }
+}
+
+@mixin outlined-variant($varaint, $color, $color-text) {
+  &.#{$varaint} {
+    outline: 1px solid $color;
+    &:hover {
+      border: none;
+      background: $color;
+      color: $color-text;
+    }
+  }
+}
+
+/*
+  Size supprt
+  
+  size(variant, base)
+    padding
+    font-size
+ 
+*/
+
+@mixin button-size($varaint, $base) {
+  &.size-#{$varaint} {
+    padding: $base * 0.5 $base;
+    font-size: $base;
+    min-width: $base;
+  }
+}

@@ -6,6 +6,7 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import svgr from "@svgr/rollup";
+import scss from "rollup-plugin-scss";
 
 export default defineConfig({
   input: "./src/index.ts",
@@ -22,9 +23,10 @@ export default defineConfig({
       extensions: [".ts", ".tsx"],
     }),
     svgr(),
+    scss(),
   ],
   output: [
     { file: pkg.main, format: "cjs" },
-    { file: pkg.module, format: "es" },
+    { file: pkg.module, format: "es", generatedCode: "es2015" },
   ],
 });

@@ -13,7 +13,8 @@
     "build": "yarn build:js && yarn build:type",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "svgr": "svgr --icon --typescript --title-prop --replace-attr-values '#000000=currentColor' -d src/components/SVG assets"
+    "svgr": "svgr --icon --typescript --title-prop --replace-attr-values '#000000=currentColor' -d src/components/SVG assets",
+    "test": "jest"
   },
   "peerDependencies": {
     "react": "^17.0.0",
@@ -22,7 +23,9 @@
   "dependencies": {
     "@babel/runtime": "^7.15.4",
     "react-icons": "^4.2.0",
-    "react-select": "^5.0.0"
+    "react-select": "^5.0.0",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-scss": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -36,23 +39,36 @@
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
+    "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.3.8",
     "@svgr/cli": "^5.5.0",
     "@svgr/rollup": "^5.5.0",
     "@svgr/webpack": "^5.5.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/jest": "^27.0.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/svgr__rollup": "^4.3.1",
+    "babel-jest": "^27.2.4",
     "babel-loader": "^8.2.2",
     "babel-plugin-named-asset-import": "^0.3.7",
     "babel-preset-react-app": "^10.0.0",
     "clsx": "^1.1.1",
+    "css-loader": "5",
+    "fibers": "^5.0.0",
+    "jest": "^27.2.4",
+    "node-sass": "^6.0.1",
     "react": "^16.14.0",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.14.0",
     "rollup": "^2.57.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-node-externals": "^2.2.0",
+    "sass": "^1.42.1",
+    "sass-loader": "10.1.0",
+    "style-loader": "2",
+    "ts-jest": "^27.0.5",
     "typescript": "^4.3.2"
   }
 }
