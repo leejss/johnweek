@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Button from "../Button";
+import Button from "./Button";
 import React from "react";
 import { AiFillAlert } from "react-icons/ai";
 
@@ -8,6 +8,7 @@ describe("<Button />", () => {
     render(<Button>Button</Button>);
     // screen.debug();
     expect(screen.getByRole("button")).toBeInTheDocument();
+    expect(screen.getByRole("button")).toHaveClass("primary");
   });
 
   test("아이콘 버튼이 DOM에 렌더링된다.", () => {
